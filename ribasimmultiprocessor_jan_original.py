@@ -259,7 +259,7 @@ class RibasimModel(SingleReplication, AbstractModel):
         hisfile4 =  os.path.join(working_directory, 'OUMRBIA9.Rbn', 'WORK', 'fir.his')
         measures_file = os.path.join(working_directory, 'OUMRBIA9.Rbn', 'Actions', 'Measures', 
                                      'R001-2015-RibasimRsvNodeOperRulesDataOER.mes')
-        
+        c1objective=c1
         part1min = 617.70
         part2min = 741.55
         part3min = 885.50
@@ -620,7 +620,7 @@ class RibasimModel(SingleReplication, AbstractModel):
         firobjective=sum(firobjective[880:-1])
         print(energyobjective)
   
-        return pwsobjective, energyobjective, virobjective, firobjective#,c1objective,fracb1objective
+        return pwsobjective, energyobjective, virobjective, firobjective,c1objective#,fracb1objective
 
 
 
@@ -685,7 +685,8 @@ if __name__ == '__main__':
     basin_model.outcomes = [ScalarOutcome('pwsobjective', kind=ScalarOutcome.MINIMIZE),
                             ScalarOutcome('energyobjective', kind=ScalarOutcome.MAXIMIZE),
                             ScalarOutcome('virobjective', kind=ScalarOutcome.MINIMIZE),
-                            ScalarOutcome('firobjective', kind=ScalarOutcome.MINIMIZE)]
+                            ScalarOutcome('firobjective', kind=ScalarOutcome.MINIMIZE),
+                            ScalarOutcome('c1objective', kind=ScalarOutcome.MINIMIZE)]
 
     convergence_metrics = [EpsilonProgress()]
 
